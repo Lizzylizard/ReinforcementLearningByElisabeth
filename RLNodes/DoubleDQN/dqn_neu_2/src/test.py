@@ -41,7 +41,7 @@ if __name__ == '__main__':
   # file paths
   net_number = net
   training_net_path = \
-    "/home/user/workspace/ReinforcementLearningByElisabeth/RLNodes/DoubleDQN/dqn_neu_2/Training/Training_Network_" + str(net_number) + ".h5"
+    "/home/user/workspace/src/ReinforcementLearningByElisabeth/RLNodes/DoubleDQN/dqn_neu_2/Training/Training_Network_" + str(net_number) + ".h5"
 
   # hyperparameters
   image_length = robot.image_length
