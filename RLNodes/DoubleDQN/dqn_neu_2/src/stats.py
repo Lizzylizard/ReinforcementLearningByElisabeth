@@ -12,7 +12,7 @@ states = []
 rewards = [[]]
 actions = []
 sorted_states = np.arange(8)
-path = '/home/user/workspace/ReinforcementLearningByElisabeth/RLNodes/DoubleDQN/dqn_neu_2/stats/'
+path = '/home/user/workspace/src/ReinforcementLearningByElisabeth/RLNodes/DoubleDQN/dqn_neu_2/stats/'
 net_num = 0
 
 
