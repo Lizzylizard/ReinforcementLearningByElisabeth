@@ -124,7 +124,7 @@ class Bot:
     try:
       # open correct file
       f = open(
-        "/home/user/workspace/ReinforcementLearningByElisabeth/RLNodes/q_matrix/Q-Matrix-Records.txt",
+        "/home/user/workspace/src/ReinforcementLearningByElisabeth/RLNodes/q_matrix/Q-Matrix-Records.txt",
         "a")
       # f = open("../Q_Matrix/Q-Matrix-Records.txt", "a")
 
