@@ -12,7 +12,7 @@ states = []
 rewards = [[]]
 actions = []
 sorted_states = np.arange(8)
-path = '/home/user/workspace/ReinforcementLearningByElisabeth/RLNodes/SingleDQN/dqn_keras_1/stats/'
+path = '/home/user/workspace/src/ReinforcementLearningByElisabeth/RLNodes/SingleDQN/dqn_keras_1/stats/'
 
 
 # set info
