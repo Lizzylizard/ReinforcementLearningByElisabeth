@@ -11,7 +11,7 @@ states = []
 rewards = [[]]
 actions = []
 sorted_states = np.arange(8)
-path = '/home/user/workspace/ReinforcementLearningByElisabeth/RLNodes/q_matrix/stats/'
+path = '/home/user/workspace/src/ReinforcementLearningByElisabeth/RLNodes/q_matrix/stats/'
   
 # set info
 def set_info(state, reward, action):
