@@ -42,12 +42,12 @@ class Robot:
   def __init__(self):
     # saving variables
     self.image_path = \
-      "/home/user/workspace/ReinforcementLearningByElisabeth/RLNodes/DoubleDQN/dqn_neu_2/images"
+      "/home/user/workspace/src/ReinforcementLearningByElisabeth/RLNodes/DoubleDQN/dqn_neu_2/images"
     self.net_number = 3
     self.training_net_path = \
-      "/home/user/workspace/ReinforcementLearningByElisabeth/RLNodes/DoubleDQN/dqn_neu_2/Training/Training_Network_" + str(self.net_number) + ".h5"
+      "/home/user/workspace/src/ReinforcementLearningByElisabeth/RLNodes/DoubleDQN/dqn_neu_2/Training/Training_Network_" + str(self.net_number) + ".h5"
     self.target_net_path = \
-      "/home/user/workspace/ReinforcementLearningByElisabeth/RLNodes/DoubleDQN/dqn_neu_2/Target/Target_Network_" + str(self.net_number) + ".h5"
+      "/home/user/workspace/src/ReinforcementLearningByElisabeth/RLNodes/DoubleDQN/dqn_neu_2/Target/Target_Network_" + str(self.net_number) + ".h5"
 
     # hyperparameters
     self.speed = 20.0
