@@ -1,0 +1,27 @@
+material chasis{
+    technique
+    {
+        pass
+        {
+            texture_unit
+            {
+                texture chasis_texture.png
+                scale 0.5 0.5
+            }
+        }   
+    }
+}
+
+material camera{
+    technique
+    {
+        pass
+        {
+            texture_unit
+            {
+                texture camera_texture.jpg
+                scale 1 1
+            }
+        }   
+    }
+}

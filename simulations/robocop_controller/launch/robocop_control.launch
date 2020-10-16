@@ -1,0 +1,5 @@
+<?xml version="1.0" ?>
+<launch>
+    <include file="$(find robocop_description)/launch/robocop_maze.launch" />
+    <node pkg="robocop_controller" type="robocop_controller_node" name="robocop_controller_node" />
+</launch>

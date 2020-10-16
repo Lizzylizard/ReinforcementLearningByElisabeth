@@ -1,0 +1,56 @@
+material head{
+    technique
+    {
+        pass
+        {
+            texture_unit
+            {
+                texture head.jpg
+                scale 1 1
+            }
+        }   
+    }
+}
+
+material eye{
+    technique
+    {
+        pass
+        {
+            texture_unit
+            {
+                texture eye.jpg
+                scale 1 1
+            }
+        }   
+    }
+}
+
+material body{
+    technique
+    {
+        pass
+        {
+            texture_unit
+            {
+                texture body.png
+                scale 1 1
+            }
+        }   
+    }
+}
+
+material leg{
+    technique
+    {
+        pass
+        {
+            texture_unit
+            {
+                texture leg.jpg
+                scale 1 1
+            }
+        }   
+    }
+}
+

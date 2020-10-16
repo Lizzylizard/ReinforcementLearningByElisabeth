@@ -1,0 +1,99 @@
+<?xml version="1.0" ?>
+<robot name="macroed" xmlns:xacro="http://ros.org/wiki/xacro">
+
+    <xacro:property name="body_len" value="0.6" />
+    <xacro:property name="body_radius" value="0.2" />
+    <xacro:property name="leglen" value="0.6" />
+    <xacro:property name="polelen" value="0.2" />
+    <xacro:property name="baselen" value="0.4" />
+    <xacro:property name="wheeldim" value="0.07" />
+
+    <!-- default inertial -->
+    <xacro:macro name="default_inertial" params="mass">
+        <inertial>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <mass value="${mass}" />
+            <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
+        </inertial>
+    </xacro:macro>
+
+    <!-- leg xacro -->
+    <xacro:macro name="leg" params="prefix reflect">
+        <link name="${prefix}_leg_link">
+            <xacro:default_inertial mass="10" />
+
+            <visual>
+                <origin xyz="0 0 -${leglen/2}" rpy="0 ${pi/2} 0" />
+                <geometry>
+                    <box size="${leglen} 0.1 0.2" />
+                </geometry>
+                <material name="black" />
+            </visual>
+            <collision>
+                <origin xyz="0 0 -${leglen/2}" rpy="0 ${pi/2} 0" />
+                <geometry>
+                    <box size="${leglen} 0.1 0.2" />
+                </geometry>
+            </collision>
+
+            <visual>
+                <origin xyz="0 0 ${-leglen}" />
+                <geometry name="${prefix}_base">
+                    <box size="${baselen} 0.1 0.1" />
+                </geometry>
+                <material name="black" />
+            </visual>
+            <collision name="${prefix}_base">
+                <origin xyz="0 0 ${-leglen}" />
+                <geometry>
+                    <box size="${baselen} 0.1 0.1" />
+                </geometry>
+            </collision>
+
+        </link>
+
+        <joint name="${prefix}_leg_to_base_joint" type="fixed">
+            <origin xyz="0 ${reflect*(body_radius+.02)} 0.25" />
+            <parent link="base_link" />
+            <child link="${prefix}_leg_link" />
+        </joint>
+
+        <xacro:wheel prefix="${prefix}" suffix="front" reflect="-1" />
+    </xacro:macro>
+
+    <!-- wheel xacro -->
+    <xacro:macro name="wheel" params="prefix suffix reflect">
+        <link name="${prefix}_wheel">
+            <xacro:default_inertial mass="1" />
+            <visual>
+                <origin xyz="0.0 0.0 0.0" rpy="${pi/2} 0.0 0.0" />
+                <geometry>
+                    <cylinder radius="${wheeldim}" length="0.05" />
+                </geometry>
+                <material name="black" />
+            </visual>
+            <collision>
+                <origin xyz="0.0 0.0 0.0" rpy="${pi/2} 0.0 0.0" />
+                <geometry>
+                    <cylinder radius="${wheeldim}" length="0.1" />
+                </geometry>
+            </collision>
+        </link>
+
+        <joint name="${prefix}_wheel_joint" type="continuous">
+            <origin xyz="0 0 -${leglen+wheeldim/2}" rpy="0.0 0.0 0.0" />
+            <parent link="${prefix}_leg_link" />
+            <child link="${prefix}_wheel" />
+            <axis xyz="0.0 1.0 0.0" />
+        </joint>
+
+        <gazebo reference="${prefix}_wheel">
+            <mu1 value="200.0" />
+            <mu2 value="100.0" />
+            <kp value="10000000.0" />
+            <kd value="1.0" />
+            <material>Gazebo/Grey</material>
+        </gazebo>
+    </xacro:macro>
+
+</robot>

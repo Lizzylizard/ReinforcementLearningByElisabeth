@@ -1,0 +1,45 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="https://www.ros.org/wiki/xacro">
+
+    <xacro:macro name="wheel" params="name reflect">
+        <link name="wheel_${name}_link">
+            <visual>
+                <origin xyz="0.9845 ${-0.03*reflect} -0.104" rpy="0.0 0.0 ${pi/2}" />
+                <geometry>
+                    <mesh filename="package://robocop_description/media/meshes/wheel.dae" scale="0.25 0.4 0.4" />
+                </geometry>
+            </visual>
+            <collision>
+                <origin xyz="0 0 0" rpy="0 ${pi/2} ${pi/2}" />
+                <geometry>
+                    <cylinder length="0.04" radius="0.1" />
+                </geometry>
+            </collision>
+
+            <inertial>
+                <mass value="0.2" />
+                <origin xyz="0.0 0.0 0.0" rpy="0 ${pi/2} ${pi/2}" />
+                <inertia ixx="0.00052666666" ixy="0" ixz="0" iyy="0.00052666666" iyz="0" izz="0.001" />
+            </inertial>
+        </link>
+
+        <joint name="wheel_${name}_joint" type="continuous">
+            <parent link="base_link" />
+            <child link="wheel_${name}_link" />
+            <origin xyz="-0.11 ${0.15*reflect} 0.01" rpy="0 0 0" />
+            <axis xyz="0 1 0" rpy="0 0 0" />
+            <limit effort="10000" velocity="1000" />
+            <joint_properties damping="1.0" friction="1.0" />
+        </joint>
+
+        <gazebo reference="wheel_${name}_joint">
+            <mu1 value="200.0" />
+            <mu2 value="100.0" />
+            <kp value="10000000.0" />
+            <kd value="1.0" />
+            <material>Gazebo/DarkGrey</material>
+        </gazebo>
+
+    </xacro:macro>
+
+</robot>

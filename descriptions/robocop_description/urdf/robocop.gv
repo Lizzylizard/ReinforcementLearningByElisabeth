@@ -1,0 +1,23 @@
+digraph G {
+node [shape=box];
+"base_footprint" [label="base_footprint"];
+"base_link" [label="base_link"];
+"camera_link" [label="camera_link"];
+"camera_rgb_frame" [label="camera_rgb_frame"];
+"camera_rgb_optical_frame" [label="camera_rgb_optical_frame"];
+"imu_link" [label="imu_link"];
+"base_scan" [label="base_scan"];
+node [shape=ellipse, color=blue, fontcolor=blue];
+"base_footprint" -> "base_joint" [label="xyz: 0 0 0.01 \nrpy: 0 -0 0"]
+"base_joint" -> "base_link"
+"base_link" -> "camera_joint" [label="xyz: 0 0.011 0.1 \nrpy: 0 -0 0"]
+"camera_joint" -> "camera_link"
+"camera_link" -> "camera_rgb_joint" [label="xyz: 0.1 0 0.04 \nrpy: 0 -0 0"]
+"camera_rgb_joint" -> "camera_rgb_frame"
+"camera_rgb_frame" -> "camera_rgb_optical_joint" [label="xyz: 0 0 0 \nrpy: -1.57 -5.55112e-17 -1.57"]
+"camera_rgb_optical_joint" -> "camera_rgb_optical_frame"
+"base_link" -> "imu_joint" [label="xyz: 0 0 0.068 \nrpy: 0 -0 0"]
+"imu_joint" -> "imu_link"
+"base_link" -> "scan_joint" [label="xyz: -0.064 0 0.122 \nrpy: 0 -0 0"]
+"scan_joint" -> "base_scan"
+}

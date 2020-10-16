@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<launch>
+    <include file="$(find robocop_description)/launch/robocop_racetrack.launch" />
+
+    <node name="left_wheel_pid" pkg="pid" type="controller">
+        <param name="Kp" value="0.8" />
+        <param name="Ki" value="0.0" />
+        <param name="Kd" value="0.05" />
+        <param name="upper_limit" value="320" />
+        <param name="lower_limit" value="-320" />
+        <param name="windup_limit" value="320" />
+        <param name="max_loop_frequency" value="10.0" />
+        <param name="min_loop_frequency" value="10.0" />
+    </node>
+
+    <!-- <node pkg="rqt_plot" type="rqt_plot" name="rqt_plot" args="/control_effort/data /state/data /setpoint/data" /> -->
+
+    <!-- <node pkg="rqt_reconfigure" type="rqt_reconfigure" name="rqt_reconfigure" /> -->
+
+    <node pkg="robocop_racetrack" type="robocop_racetrack_node" name="robocop_racetrack_node" />
+</launch>

@@ -1,0 +1,5 @@
+<?xml version="1.0" ?>
+<launch>
+    <include file="$(find three_pi_description)/launch/three_pi_race_city.launch" />
+    <node pkg="pololu_rl" type="pololu_rl_node" name="pololu_rl_node" output="screen" />
+</launch>
